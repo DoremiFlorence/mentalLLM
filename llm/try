@@ -1,0 +1,15 @@
+//接受两个feature map，各自复制n次，在channel的维度拼接，最后输出
+list a=[0]
+list b=[a,a]
+b[0][0]=1
+b[1]
+[1]
+
+import math
+def sigmoid(float x):
+    return 1/(1+exp(-x))
+x=input()
+print
+
+x+y
+E(X)+E(Y)

@@ -1,0 +1,124 @@
+/* 设置 body 和 html 元素的高度为 100%，取消默认的边距 */
+body, html {
+    height: 100%; /* 设置高度为 100% */
+    width: 100%; /* 宽度为 100% */
+    margin: 0; /* 取消默认的外边距 */
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #f0f0f0; /* 设置背景颜色 */
+}
+
+/* 容器样式 */
+.container {
+    max-width: 1000px; /* 最大宽度为 1000px */
+    width: 100%; /* 宽度为 100% */
+    height: 98%; /* 保持容器的高度为视口高度的 95% */
+    background-color: white; /* 设置背景颜色为白色 */
+    border: 1px solid #ccc; /* 边框颜色为浅灰色 */
+    border-radius: 10px; /* 设置圆角边框 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直方向排列 */
+}
+
+/* 隐藏元素的样式 */
+.hidden {
+    display: none; /* 不显示 */
+}
+
+/* 信息容器样式 */
+.info-container {
+    max-width: 1000px; /* 最大宽度为 1000px */
+    width: 100%; /* 宽度为 100% */
+    padding: 20px; /* 内边距为 20px */
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直方向排列 */
+    box-sizing: border-box; /* 包括内边距和边框在内计算元素的总宽度和高度 */
+}
+
+/* 信息容器中 input 元素的样式 */
+.info-container input {
+    padding: 10px; /* 内边距为 10px */
+    margin-bottom: 30px; /* 底部外边距为 10px */
+    border: 1px solid #ccc; /* 边框颜色为浅灰色 */
+    border-radius: 5px; /* 设置圆角边框 */
+    outline: none; /* 去掉焦点时的边框 */
+    width: 100%; /* 宽度为 100%，使其与父容器宽度一致 */
+    box-sizing: border-box; /* 包括内边距和边框在内计算元素的总宽度和高度 */
+}
+
+/* 聊天容器样式 */
+.chat-container {
+    flex-grow: 1; /* 占据剩余空间 */
+    width: 100%; /* 宽度为 100% */
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直方向排列 */
+    overflow: hidden; /* 确保内容溢出时隐藏 */
+}
+
+/* 聊天框样式 */
+.chat-box {
+    flex-grow: 1; /* 占据剩余空间 */
+    padding: 10px; /* 内边距为 10px */
+    overflow-y: auto; /* 使对话框可以上下滚动 */
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直方向排列 */
+    max-height: calc(100% - 60px); /* 计算最大高度，考虑输入框的高度 */
+}
+
+/* 消息样式 */
+.message {
+    display: block; /* 块状显示 */
+    max-width: 70%; /* 最大宽度为 70% */
+    margin-bottom: 10px; /* 底部外边距为 10px */
+    padding: 10px; /* 内边距为 10px */
+    border-radius: 10px; /* 设置圆角边框 */
+    word-wrap: break-word; /* 长单词换行 */
+}
+
+/* 用户消息样式 */
+.user {
+    background-color: #e2f7cb; /* 背景颜色为浅绿色 */
+    align-self: flex-end; /* 水平靠右对齐 */
+    text-align: left; /* 文本左对齐 */
+}
+
+/* 机器人消息样式 */
+.bot {
+    background-color: #c1dffb; /* 背景颜色为浅蓝色 */
+    align-self: flex-start; /* 水平靠左对齐 */
+    text-align: left; /* 文本左对齐 */
+}
+
+/* 输入容器样式 */
+.input-container {
+    display: flex; /* 使用 flex 布局 */
+    padding: 10px; /* 内边距为 10px */
+    background-color: #f7f7f7; /* 背景颜色为浅灰色 */
+    border-top: 1px solid #ccc; /* 顶部边框颜色为浅灰色 */
+    position: sticky; /* 使用 sticky 定位 */
+    bottom: 0; /* 固定在底部 */
+    z-index: 10; /* 设置堆叠顺序 */
+}
+
+/* 输入框样式 */
+.input-container input {
+    flex-grow: 1; /* 占据剩余空间 */
+    padding: 10px; /* 内边距为 10px */
+    margin-right: 10px; /* 右外边距为 10px */
+    border: 1px solid #ccc; /* 边框颜色为浅灰色 */
+    border-radius: 5px; /* 设置圆角边框 */
+    outline: none; /* 去掉焦点时的边框 */
+}
+
+/* 提交按钮样式 */
+.input-container button {
+    padding: 10px 15px; /* 内边距为 10px 15px */
+    border: none; /* 去掉边框 */
+    border-radius: 5px; /* 设置圆角边框 */
+    background-color: #4CAF50; /* 背景颜色为绿色 */
+    color: white; /* 文字颜色为白色 */
+    cursor: pointer; /* 鼠标指针为手形 */
+    outline: none; /* 去掉焦点时的边框 */
+}

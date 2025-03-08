@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>对话系统</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .info-container input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            display: block;
+            max-width: 50%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+        .user {
+            background-color: #e2f7cb;
+            align-self: flex-end;
+            text-align: left;
+        }
+        .bot {
+            background-color: #c1dffb;
+            align-self: flex-start;
+            text-align: left;
+        }
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-top: 1px solid #ccc;
+        }
+        .input-container input {
+            flex-grow: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .input-container button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="info-container" class="info-container">
+            <h2>请填写您的个人信息</h2>
+            <input type="text" id="nickname" placeholder="昵称">
+            <input type="number" id="age" placeholder="年龄">
+            <input type="text" id="job" placeholder="工作">
+            <button id="info-submit-button">提交</button>
+        </div>
+        <div id="chat-container" class="chat-container hidden">
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="请输入您的回答">
+                <button id="submit-button">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let now_ques = "您是否经常因为一些小事而烦恼？";
+        let total_score = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatBox = document.getElementById('chat-box');
+            const userInput = document.getElementById('user-input');
+            const submitButton = document.getElementById('submit-button');
+            const infoContainer = document.getElementById('info-container');
+            const chatContainer = document.getElementById('chat-container');
+            const infoSubmitButton = document.getElementById('info-submit-button');
+
+            const appendMessage = (text, sender) => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', sender);
+                messageElement.innerText = text;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            };
+
+            const sendMessage = () => {
+                const userText = userInput.value;
+                if (!userText) return;
+
+                appendMessage(userText, 'user');
+                userInput.value = '';
+
+                fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_input: userText,
+                        now_ques: now_ques,
+                        total_score: total_score
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    appendMessage(data.reply, 'bot');
+                    total_score = data.total_score;
+                    if (data.finished) {
+                        appendMessage(`问卷结束～\n最终得分是: ${total_score}`, 'bot');
+                    } else {
+                        now_ques = data.next_question;
+                        appendMessage(now_ques, 'bot');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            };
+
+            infoSubmitButton.addEventListener('click', () => {
+                const nickname = document.getElementById('nickname').value;
+                const age = document.getElementById('age').value;
+                const job = document.getElementById('job').value;
+
+                if (!nickname || !age || !job) {
+                    alert('请填写所有信息');
+                    return;
+                }
+
+                infoContainer.classList.add('hidden');
+                chatContainer.classList.remove('hidden');
+                appendMessage(`欢迎您，${nickname}！我们将开始问卷调查。`, 'bot');
+                appendMessage(now_ques, 'bot');
+            });
+
+            submitButton.addEventListener('click', sendMessage);
+
+            userInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

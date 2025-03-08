@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息收集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div id="info-container" class="info-container">
+            <h2>请填写您的个人信息</h2>
+            <input type="text" id="nickname" placeholder="昵称">
+            <input type="number" id="age" placeholder="年龄">
+            <input type="text" id="job" placeholder="工作">
+            <button id="info-submit-button">提交</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='info_script.js') }}"></script>
+</body>
+</html>

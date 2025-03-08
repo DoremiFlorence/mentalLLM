@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>对话系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div id="chat-container" class="chat-container">
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="请输入您的回答">
+                <button id="submit-button">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='chat_script.js') }}"></script>
+</body>
+</html>

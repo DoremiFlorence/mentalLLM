@@ -1,0 +1,70 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.chat-container {
+    max-width: 1000px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box; /* 包含padding在内的宽度和高度 */
+}
+
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: block;
+    max-width: 50%; /* 最大宽度不超过屏幕的一半 */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word; /* 长文本自动换行 */
+}
+
+.user {
+    background-color: #e2f7cb;
+    align-self: flex-end; /* 用户消息在右侧 */
+    text-align: left; /* 文本对齐调整为左侧对齐 */
+}
+
+.bot {
+    background-color: #c1dffb;
+    align-self: flex-start; /* 机器人消息在左侧 */
+    text-align: left; /* 文本对齐保持左侧对齐 */
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ccc;
+}
+
+.input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
