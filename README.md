@@ -1,7 +1,7 @@
 系统主要实现了两个功能：1. 根据抑郁自测问卷引导用户，在对话中完成测试，并给出分数。2. 共情用户回答，并提出有效建议。
 
 ## 整体系统架构
-![模型架构](https://github.com/user-attachments/assets/824fbe90-725f-455e-bd75-6c67e68f6aee){width=50%}
+<img width="600" alt="examp" src="https://github.com/user-attachments/assets/824fbe90-725f-455e-bd75-6c67e68f6aee" />
 
 ## 效果展示
 负面情绪开导：
