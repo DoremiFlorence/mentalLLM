@@ -4,5 +4,5 @@
 ![模型架构](https://github.com/user-attachments/assets/824fbe90-725f-455e-bd75-6c67e68f6aee)
 
 ## 效果展示
-负面情绪开导：<img width="1004" alt="examp1" src="https://github.com/user-attachments/assets/5b779d3c-ef03-4246-ab92-a48b4866a313" />
-正面鼓励：<img width="1004" alt="examp2" src="https://github.com/user-attachments/assets/5c237c3e-20af-4166-b78e-f666a81985ae" />
+负面情绪开导：<img width="500" alt="examp1" src="https://github.com/user-attachments/assets/5b779d3c-ef03-4246-ab92-a48b4866a313" />
+正面鼓励：<img width="500" alt="examp2" src="https://github.com/user-attachments/assets/5c237c3e-20af-4166-b78e-f666a81985ae" />
